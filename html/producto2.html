@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.cdnfonts.com/css/rubik" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-header">
+        <p id="welcome-message"></p>
+        <div class="container-carrito">
+            <a href="./carrito.html">Carrito</a>
+            <p class="items-carrito" id="items">0</p>
+            <p  class="total-carrito" id="total">$0,00</p>
+        </div>
+
+    </div>
+    
+    <div class="container-detalle-producto">
+
+            <div class="container-img">
+                <img src="../assets/prod2.png" alt="Motorola Moto Edge 40 Neo ">
+            </div>
+            <div class="container-detalles">
+                <div class="titulo-producto">
+                    <h2>Motorola Moto Edge 40 Neo (8GB/256GB) - Reacondicionado Grado A</h2>
+                    <p>Cantidad disponible: </p>
+                </div>
+                
+                <div class="subtitulo-producto"> 
+                    <h3>Motorola Moto Edge 40 Neo (8GB/256GB) - Reacondicionado Grado A</h3>
+                </div>
+                <div class="container-precio">
+                    <p><span class="precio-oferta">$549.999,00</span></p>
+                    <p><span class="precio-anterior">$635.500,00</span></p>
+                </div>
+                <div class="container-carrito-add">
+                    <input type="number" name="cantidad" id="cantidad" value="1">
+                    <button onclick="addCarrito({id: '2', nombre: 'Moto Edge 40 Neo', precio: 549999, cantidad: document.getElementById('cantidad').value, descripcion: 'Motorola Moto Edge 40 Neo (8GB/256GB) - Reacondicionado Grado A', imagen: '../assets/prod2.png'})" id="carrito-add">Agregar al carrito</button>
+                </div>
+            </div>  
+
+    </div>
+    <script src="../js/main.js"></script>
+    <script src="../js/script3.js"></script>
+</body>
+</html>

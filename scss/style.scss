@@ -1,0 +1,266 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Rubik', sans-serif;
+    background-color:beige;
+    color: black;
+}
+
+input{
+    margin-top: 10px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-end;
+    width: 250px
+}
+
+button{
+    align-self: center;
+    margin-top: 10px;
+    height: 25px;
+    width: 50px;
+}
+
+.container-header{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color:darkgray;
+    height: 30px;
+}
+
+.container-carrito{
+    display: flex;
+    width: 240px;
+    justify-content: space-between;
+}
+
+.title{
+    h1{
+        font-size: 25px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 10px;
+        border-bottom: 2px solid blue;
+    }
+
+}
+
+.container-productos{
+    width: 95%;
+    height: 75%;
+    display: flex;
+}
+
+.producto{
+    width: 25%;
+    a{
+        text-decoration: none;
+        h2{
+            font-size: 16px;
+            font-weight: 300;
+            color: #ec128f;
+            margin-bottom: 10px;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        };
+    }
+    .precio-oferta{
+        color: #dc3545;
+        font-size: 20px;
+    }
+
+    .precio-anterior{
+        color: grey;
+        font-size: 12px;
+        text-decoration: line-through;
+    }
+
+    margin-bottom: 20px;
+    margin-left: 20px;
+    border: 1px solid lightgoldenrodyellow;
+}
+
+.container-detalle-producto{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.container-detalles{
+    margin-left: 30px;
+
+}
+
+.titulo-producto{
+    h2{
+        margin-bottom: 20px;
+        font-family: 'Rubik', sans-serif;
+        font-weight: 400;
+        color: #333e48;
+    }
+    p{
+        margin-bottom: 20px;
+        color: darkslategrey
+    }
+    border-bottom: 1px solid grey;
+}
+
+.subtitulo-producto{
+    margin-top: 20px;
+    h3{
+        font-family: 'Rubik', sans-serif;
+        font-weight: 400;
+        color: #333e48;
+    }
+}
+
+.container-precio{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    .precio-oferta{
+        color: #dc3545;
+        font-size: 26px;
+    }
+    .precio-anterior{
+        margin-left: 10px;
+        color: grey;
+        font-size: 18px;
+        text-decoration: line-through;
+    }
+
+}
+
+.container-carrito-add{
+    display: flex;
+    margin-top: 40px;
+    input[type=number]{
+        border-radius: 15px;
+        border: 1px solid grey;
+        text-align: end;
+        width: 100px;
+    }
+    button{
+        margin-left: 20px;
+        width: 150px;
+        height: 40px;
+        border-radius: 15px;
+        border: 1px solid grey;
+        background-color: #FF1396;
+        color: white;
+    }
+}
+
+.carrito-title{
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.container-tabla-carrito{
+    display: flex;
+    justify-content: center;
+}
+
+.tabla-carrito{
+    width: 90%;
+    //En el modo separado, los navegadores representan el margin y el padding de la tabla (<table>) y el padding de las celdas (<td>).
+    //En el modo colapsado, los navegadores representan únicamente el margin de la tabla (<table>) y el padding de las celdas (<td>).
+    border-collapse: collapse;
+    thead{
+        tr{
+
+            border-bottom: 1px solid grey;
+            th{
+                padding: 10px;
+            }
+        }
+    }
+    tbody{
+        tr{
+            border-bottom: 1px solid grey;
+            td{
+                padding: 10px;
+            }
+        }
+    }
+    // background-color: yellow;
+}
+
+.imagen-item-carrito{
+    width: 85px;
+    height: 85px;
+    border: 1px solid lightgrey;
+}
+
+.th-imagen{
+    width: 10%;
+    text-align: start;
+}
+
+.th-producto{
+    width: 50%;
+    text-align: start;
+}
+
+.th-precio{
+    width: 15%;
+    text-align: start;
+}
+
+.th-cantidad{
+    width: 10%;
+    text-align: start;
+}
+
+.th-subtotal{
+    width: 15%;
+    text-align: start;
+}
+
+.btn-del-item{
+    width: 100px;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.btn-comprar{
+    width: 100px;
+    cursor: pointer;
+    background-color: #FF1396;
+    color: white;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.total-carrito-text{
+    font-weight: bold;
+}
+
+.total-carrito-value{
+    font-weight: bold;
+}
+
+.container-carrito-vacio{
+    height:200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p{
+        font-size: 36px;
+        margin: 30px 0;
+    }
+}

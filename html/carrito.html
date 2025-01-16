@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.cdnfonts.com/css/rubik" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-header">
+        <p id="welcome-message"></p>
+        <div class="container-carrito">
+            <a href="./carrito.html">Carrito</a>
+            <p class="items-carrito" id="items">0</p>
+            <p  class="total-carrito" id="total">$0,00</p>
+        </div>
+    </div>
+
+    <div class="carrito-title"><p>Mi carrito de compras</p></div>
+    <div class="container-tabla-carrito" id="container-tabla-carrito">
+        <table class="tabla-carrito">
+            <thead>          
+                    <tr id="row-title">
+                        <th class="th-imagen"></th>
+                        <th class="th-producto">Producto</th>
+                        <th class="th-precio">Precio</th>
+                        <th class="th-cantidad">Cantidad</th>
+                        <th class="th-subtotal">Subtotal</th>
+                    </tr>
+            </thead>
+            <tbody id="td-tabla-carrito">
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container-carrito-vacio" id="container-carrito-vacio"><p class="p-carrito-vacio" id="p-carrito-vacio"></p></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/script4.js"></script>
+</body>
+</html>

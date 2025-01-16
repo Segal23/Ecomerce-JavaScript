@@ -1,0 +1,3 @@
+getSessionValues();
+agruparItems();
+actualizarItems();
