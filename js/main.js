@@ -22,7 +22,7 @@ function login(){
             let apellido = usuarios[i].apellido
             sessionStorage.setItem("apellido", apellido);
     
-            window.location.href = "html/main_page.html";
+            window.location.href = "./html/main_page.html";
             // let welcomeMessage= document.getElementById('welcome-message')
             // welcomeMessage.textContent = "Bienvenido " + usuarios[i].nombre + " " + usuarios[i].apellido + "!!!";
             } else {
