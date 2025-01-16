@@ -22,7 +22,10 @@ function login(){
             let apellido = usuarios[i].apellido
             sessionStorage.setItem("apellido", apellido);
     
-            window.location.href = "./html/main_page.html";
+            window.location.href = "./html/main_page.html"; 
+            //para poner esta referencia hay que tener en cuenta como si se estuviera llamando desde el html en el que estamos (en este caso en el index.html) y no como si estuvieramos en el script porque si bien acá funciona en Github no toma la referencia y no encuentra la página.
+
+            
             // let welcomeMessage= document.getElementById('welcome-message')
             // welcomeMessage.textContent = "Bienvenido " + usuarios[i].nombre + " " + usuarios[i].apellido + "!!!";
             } else {
