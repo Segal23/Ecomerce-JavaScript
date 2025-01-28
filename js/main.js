@@ -1,139 +1,128 @@
-function login(){
+class Producto{
 
+    static ContadorId = 1;
+
+    constructor(nombre, descripcion, imagen, precio, cantidad){
+        this.id = Producto.ContadorId++;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.imagen = imagen;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.subtotal = 0;
+    }
+
+    calcularSubtotal(){
+        this.subtotal = this.precio * this.cantidad
+    }
+}
+
+function login(){
     // Usuarios registrados
     let usuarios = [
         {nombre: "Sebastián", apellido: "Gallegos", edad: "47", usuario: "segal", clave: "segal#01"}
     ];
-    
+
     // Obtener valores del formulario
     let username = document.getElementById('username').value;
     let password = document.getElementById('password').value;
     let message = document.getElementById('message');
-    
+
     // Validar credenciales
     for (let i = 0; i <= usuarios.length-1; i++){
-    
+
         if (username == usuarios[0].usuario && password == usuarios[0].clave){
             message.textContent = "";
-            
+
             let nombre = usuarios[i].nombre;
             sessionStorage.setItem("nombre", nombre);
-            
+
             let apellido = usuarios[i].apellido
             sessionStorage.setItem("apellido", apellido);
-    
-            window.location.href = "./html/main_page.html"; 
-            //para poner esta referencia hay que tener en cuenta como si se estuviera llamando desde el html en el que estamos (en este caso en el index.html) y no como si estuvieramos en el script porque si bien acá funciona en Github no toma la referencia y no encuentra la página.
 
-            
-            // let welcomeMessage= document.getElementById('welcome-message')
-            // welcomeMessage.textContent = "Bienvenido " + usuarios[i].nombre + " " + usuarios[i].apellido + "!!!";
-            } else {
+            window.location.href = "./html/main_page.html";
+            //para poner esta referencia hay que tener en cuenta como si se estuviera llamando desde el html en el que estamos (en este caso en el index.html) y no como si estuvieramos en el script porque si bien acá funciona en Github no toma la referencia y no encuentra la página.
+        } else {
                 message.textContent = "Usuario o contraseña incorrectos.";
             };
-    
+
     }
-}
-
-
-let carrito = [];
-let carritoAgrupado = [];
-let cantItems = 0;
-let totalItems = 0;
-
-function setSessionValues(arrayCarrito=null){
-    if (arrayCarrito !== null){
-        sessionStorage.setItem("miCarrito", JSON.stringify(arrayCarrito)); 
-    } else {
-        sessionStorage.setItem("miCarrito", JSON.stringify(carrito));
-    }
-
-    if(JSON.parse(sessionStorage.getItem("miCarrito")) !== null){
-        carrito = JSON.parse(sessionStorage.getItem("miCarrito"));  
-    }  
-
-    cantItems = 0;
-    totalItems = 0;
-
-    for (let i = 0; i < carrito.length; i++){
-        cantItems += parseInt(carrito[i].cantidad);
-        totalItems  += (parseInt(carrito[i].precio) * parseInt(carrito[i].cantidad)) ;
-    }
-
-    sessionStorage.setItem("items", cantItems);
-    sessionStorage.setItem("total", totalItems);
 }
 
 function getSessionValues(){
-    if(JSON.parse(sessionStorage.getItem("miCarrito")) !== null){
-        carrito = JSON.parse(sessionStorage.getItem("miCarrito"));  
-    }  
+    let carrito = JSON.parse(sessionStorage.getItem("miCarrito"));
+        if (carrito === null) {
+            carrito = [];
+        }
+        return carrito;
+}
 
-    cantItems = sessionStorage.getItem("items");
-    totalItems = sessionStorage.getItem("total");
-
-    let itemsCont = document.getElementById('items');
-    let totalCont = document.getElementById('total');
-
-    if (cantItems == null) {
-        cantItems = 0;
-    }
-
-    itemsCont.textContent = cantItems;
-
-    if (totalItems == null) {
-        totalItems = 0
-    }
-        totalCont.textContent = formatoMoneda("ARS", totalItems);
+function setSessionValues(carrito=null){
+    let cantItems = 0;
+    let totalItems = 0;
     
+    if (carrito === null){
+        carrito = getSessionValues();
+    } else{
+        sessionStorage.setItem("miCarrito", JSON.stringify(carrito));
+    }
+
+    cantItems = carrito
+                    .map(prod => prod.cantidad)
+                    .reduce(function(acumulador, valorActual)
+                    {return acumulador + valorActual;}, 0)
+
+    totalItems = carrito
+                    .map(prod => prod.subtotal)
+                    .reduce(function(acumulador, valorActual)
+                    {return acumulador + valorActual;}, 0)
+
+    document.getElementById('items').textContent = cantItems ?? 0;
+    document.getElementById('total').textContent = formatoMoneda("ARS", totalItems ?? 0);
 }
 
 function addCarrito(producto) {
-    if (parseInt(producto.cantidad) > 0 ){
-        carrito.push(producto);
-        setSessionValues();
-        getSessionValues();
+    if (parseInt(producto.cantidad) <= 0 ){
+        alert("La cantidad del producto debe ser mayor a 0");      
     }else{
-        alert("La cantidad del producto debe ser mayor a 0");
+        let carrito = getSessionValues();
+        if (carrito.find(prod => prod.nombre === producto.nombre) === undefined){
+            let nuevoProducto = new Producto(
+                producto.nombre, 
+                producto.descripcion, 
+                producto.imagen, 
+                parseInt(producto.precio), 
+                parseInt(producto.cantidad), 
+                parseInt(producto.subtotal)
+            );
+            nuevoProducto.calcularSubtotal();
+            carrito.push(nuevoProducto);
+        } else{
+            carrito = carrito.map(prod => {
+                if (prod.nombre === producto.nombre){
+                    prod.cantidad = prod.cantidad + parseInt(producto.cantidad)
+                    prod.subtotal = prod.precio * prod.cantidad;
+                }
+                return{...prod}
+            })
+        }
+        setSessionValues(carrito);
     }
 }
 
 function removerCarrito(index) {
-    let newCarrito = [];
-    let idProducto = carritoAgrupado[index].id;
-
-    for (let i = 0; i < carrito.length; i++){
-        if (carrito[i].id !== idProducto){
-            newCarrito.push(carrito[i]);
-        };
-    };
-
-    carritoAgrupado.splice(index,1);
-    
-    setSessionValues(newCarrito)
+    let carrito = getSessionValues();
+    carrito.splice(index, 1);
+    setSessionValues(carrito)
     getSessionValues();
     actualizarItems();
 }
 
-function agruparItems(){
-    let newCarrito = carrito;
-    let res = newCarrito.reduce((p, c) => {
-        let idx = p[0].indexOf(c.id);
-        if (idx > -1) {
-            p[1][idx].cantidad = parseInt(p[1][idx].cantidad) + parseInt(c.cantidad);
-            // p[1][idx].precio += parseInt(c.precio);
-        } else {
-            p[0].push(c.id);
-            p[1].push(c);
-        }
-        return p;
-    }, [[],[]]);
-
-carritoAgrupado = res[1];
-}
-
 function actualizarItems(){
-    if (carritoAgrupado.length == 0){
+
+    let carrito = getSessionValues();
+
+    if (carrito.length === 0){
         carritoVacio();
     }else{
         let cartContainer = document.getElementById('td-tabla-carrito');
@@ -144,7 +133,7 @@ function actualizarItems(){
         let itemPrecio = 0;
         let itemSubtotal = 0;
 
-        carritoAgrupado.forEach((item, index) => {
+        carrito.forEach((item, index) => {
             total += item.precio * item.cantidad;
             itemSubtotal = formatoMoneda("ARS", item.precio * item.cantidad);
             itemPrecio = formatoMoneda("ARS", item.precio);
@@ -154,16 +143,16 @@ function actualizarItems(){
                 <td><img class="imagen-item-carrito" src="${item.imagen}" alt="${item.nombre}"></td>
                 <td>${item.nombre}</td>
                 <td>${itemPrecio}</td>
-                <td>${item.cantidad}</td>  
+                <td>${item.cantidad}</td>
                 <td>${itemSubtotal}</td>
                 <td><button class="btn-del-item" onclick="removerCarrito(${index})">Remover</button></td>
             `;
             cartContainer.appendChild(cartItem);
         });
 
-        
+
         let miTotal = formatoMoneda('ARS', total);
-        
+
         let cartTotal = document.createElement('tr');
         cartTotal.className = 'total-carrito';
         cartTotal.innerHTML = `
@@ -180,16 +169,15 @@ function actualizarItems(){
 }
 
 function comprar(){
-    if (carritoAgrupado.length == 0){
+    let carrito = getSessionValues();
+    if (carrito.length == 0){
         carritoVacio();
     } else{
         var retVal = confirm("¿Desea confirmar su compra?");
         if( retVal == true ){
             carrito = [];
-            carritoAgrupado = [];
-            setSessionValues();
-            getSessionValues();
-            agruparItems();
+            setSessionValues(carrito);
+            // getSessionValues();
             alert ("Felicidades, su compra ha sido confirmada");
             actualizarItems();
             return true;
@@ -202,7 +190,7 @@ function comprar(){
 function carritoVacio(){
     let cartContainer = document.getElementById('container-tabla-carrito');
     cartContainer.remove();
-    
+
     let containerCarritoVacio = document.getElementById('container-carrito-vacio');
     containerCarritoVacio.style.backgroundColor = "limegreen";
 

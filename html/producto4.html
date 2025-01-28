@@ -38,12 +38,14 @@
                 </div>
                 <div class="container-carrito-add">
                     <input type="number" name="cantidad" id="cantidad" value="1">
-                    <button onclick="addCarrito({id: '4', nombre: 'Samsung Z Flip 4', precio: 899999, cantidad: document.getElementById('cantidad').value, descripcion: 'Samsung Z Flip 4 (8GB/128GB) - Reacondicionado Grado A', imagen: '../assets/prod4.png'})" id="carrito-add">Agregar al carrito</button>
+                    <button onclick="addCarrito({nombre: 'Samsung Z Flip 4', precio: 899999, cantidad: document.getElementById('cantidad').value, descripcion: 'Samsung Z Flip 4 (8GB/128GB) - Reacondicionado Grado A', imagen: '../assets/prod4.png', subtotal: 0})" id="carrito-add">Agregar al carrito</button>
                 </div>
             </div>  
 
     </div>
     <script src="../js/main.js"></script>
-    <script src="../js/script3.js"></script>
+    <script>
+        setSessionValues();
+    </script>
 </body>
 </html>
