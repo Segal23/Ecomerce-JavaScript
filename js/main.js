@@ -1,9 +1,7 @@
 class Producto{
 
-    static ContadorId = 1;
-
-    constructor(nombre, descripcion, imagen, precio, cantidad){
-        this.id = Producto.ContadorId++;
+    constructor(id, nombre, descripcion, imagen, precio, cantidad){
+        this.id = ++id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.imagen = imagen;
@@ -86,17 +84,25 @@ function addCarrito(producto) {
         alert("La cantidad del producto debe ser mayor a 0");      
     }else{
         let carrito = getSessionValues();
+        let maxId = carrito
+                        .map(prod => prod.id)
+                        .reduce(function(acumulador, valorActual)
+                        {return Math.max(acumulador, valorActual)}, 0)
+        
         if (carrito.find(prod => prod.nombre === producto.nombre) === undefined){
             let nuevoProducto = new Producto(
+                maxId,
                 producto.nombre, 
                 producto.descripcion, 
                 producto.imagen, 
                 parseInt(producto.precio), 
                 parseInt(producto.cantidad), 
-                parseInt(producto.subtotal)
+                // parseInt(producto.subtotal)
             );
             nuevoProducto.calcularSubtotal();
+            console.log(nuevoProducto.id);
             carrito.push(nuevoProducto);
+            console.log(carrito);
         } else{
             carrito = carrito.map(prod => {
                 if (prod.nombre === producto.nombre){
