@@ -3,7 +3,15 @@
 const baseURL =  window.location.origin.includes("github.io") 
                     ? `${window.location.origin}/Ecomerce-JavaScript` 
                     : window.location.origin;
-                    
+
+//Se fuerza la cargar la página al darle atrás en lugar de ir por el menú
+//ya que localmente funciona bien pero desde Github no se actualizan algunos valores
+window.addEventListener("pageshow", (event) => {
+    if (event.persisted) {
+        location.reload(); // Recarga solo si la página viene de la caché
+    }
+});
+
 class Producto{
 
     constructor(id, nombre, descripcion, imagen, precio, cantidad){
@@ -241,7 +249,7 @@ function setSesionUsuario(){
     if (usuario !== null) {
         let nombreUsuario = document.getElementById('usuario-logueado');
         nombreUsuario.textContent =`${usuario.username}`;
-        loginIcon.src = `${baseURL}/assets/logout_icon.png";`
+        loginIcon.src = `${baseURL}/assets/logout_icon.png;`
         loginIcon.alt = "Cerrar Sesión";
         loginDropDownListItem.innerHTML = `
             <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>`;
