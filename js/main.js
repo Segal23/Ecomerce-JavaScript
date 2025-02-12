@@ -240,7 +240,7 @@ function setSesionUsuario(){
         loginDropDownListItem.innerHTML = `
             <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>`;
     } else{
-        loginIcon.src = "../assets/login_icon.png";
+        loginIcon.src = `${window.origin}/assets/login_icon.png`;
         loginIcon.alt = "Iniciar Sesión";
         loginDropDownListItem.innerHTML = `
             <a class="dropdown-item" href="${window.origin}/html/login.html">Iniciar Sesión</a>
