@@ -4,23 +4,22 @@ const baseURL =  window.location.origin.includes("github.io")
                     ? `${window.location.origin}/Ecomerce-JavaScript` 
                     : window.location.origin;
 
-//Se fuerza la cargar la página al darle atrás en lugar de ir por el menú
-//ya que localmente funciona bien pero desde Github no se actualizan algunos valores
+// //Se fuerza la cargar la página al darle atrás en lugar de ir por el menú
+// //ya que localmente funciona bien pero desde Github no se actualizan algunos valores
 
-// Verifica si hay un historial previo que indique si navegamos hacia atrás
-let isBackNavigation = false;
+// let isBackNavigation = false;
 
-window.addEventListener("popstate", () => {
-    isBackNavigation = true;
-});
+// window.addEventListener("popstate", () => {
+//     isBackNavigation = true;
+// });
 
-window.addEventListener("pageshow", (event) => {
-    if (isBackNavigation && !sessionStorage.getItem("pageReloaded")) {
-        sessionStorage.setItem("pageReloaded", "true"); // Marcar que la página será recargada
-        location.reload(); // Recargar la página
-    }
-    isBackNavigation = false; // Reseteamos el marcador después de la recarga
-});
+// window.addEventListener("pageshow", (event) => {
+//     if (isBackNavigation && !sessionStorage.getItem("pageReloaded")) {
+//         sessionStorage.setItem("pageReloaded", "true"); // Marcar que la página será recargada
+//         location.reload(); // Recargar la página
+//     }
+//     isBackNavigation = false; // Reseteamos el marcador después de la recarga
+// });
 
 
 class Producto{
