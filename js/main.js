@@ -1,3 +1,9 @@
+//Solución para usar rutas dinámicas con cuando lo subo a Github 
+//ya agrega un directorio más y rompe las rutas
+const baseURL =  window.location.origin.includes("github.io") 
+                    ? `${window.location.origin}/Ecomerce-JavaScrip` 
+                    : window.location.origin;
+
 class Producto{
 
     constructor(id, nombre, descripcion, imagen, precio, cantidad){
@@ -202,7 +208,7 @@ async function nuevoUsuario(){
         confirmButtonText: "OK",
     });
 
-    window.location = `${window.origin}/html/login.html`;
+    window.location = `${baseURL}/html/login.html`;
 }
 
 function setSesionUsuario(){
@@ -235,16 +241,16 @@ function setSesionUsuario(){
     if (usuario !== null) {
         let nombreUsuario = document.getElementById('usuario-logueado');
         nombreUsuario.textContent =`${usuario.username}`;
-        loginIcon.src = `${window.origin}/assets/logout_icon.png";`
+        loginIcon.src = `${baseURL}/assets/logout_icon.png";`
         loginIcon.alt = "Cerrar Sesión";
         loginDropDownListItem.innerHTML = `
             <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>`;
     } else{
-        loginIcon.src = `${window.origin}/assets/login_icon.png`;
+        loginIcon.src = `${baseURL}/assets/login_icon.png`;
         loginIcon.alt = "Iniciar Sesión";
         loginDropDownListItem.innerHTML = `
-            <a class="dropdown-item" href="${window.origin}/html/login.html">Iniciar Sesión</a>
-            <a class="dropdown-item" href="${window.origin}/html/signup.html">Registrarse</a>`;
+            <a class="dropdown-item" href="${baseURL}/html/login.html">Iniciar Sesión</a>
+            <a class="dropdown-item" href="${baseURL}/html/signup.html">Registrarse</a>`;
     }
 
     //Se agrega un height y un width al img creado y se agrega el item al padre que lo va a contener
@@ -300,10 +306,10 @@ async function iniciarSesion(){
             setSesionUsuario();
 
             //Vuelve a la página desde donde se llamó al formulario de login
-            if (document.referrer !== `${window.origin}/html/signup.html`){
+            if (document.referrer !== `${baseURL}/html/signup.html`){
                 window.history.go(-1);
             }else{
-                window.location = `${window.origin}/index.html`;
+                window.location = `${baseURL}/index.html`;
             }
             
 
