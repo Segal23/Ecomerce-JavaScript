@@ -1,0 +1,79 @@
+[
+    {
+        "nombre": "Samsung Galaxy A04e",
+        "descripcion": "Samsung Galaxy A04e (3GB/32GB) – Reacondicionado Grado A",
+        "precio_lista": 319999,
+        "precio_oferta": 0,
+        "cantidad": 0
+    },
+    {
+        "nombre": "Motorola Moto G42 (XT2233)",
+        "descripcion": "Motorola Moto G42 (XT2233) – 4GB/128GB – Reacondicionado Grado B",
+        "precio_lista": 217999,
+        "precio_oferta": 0,
+        "cantidad": 0
+    },
+    {
+        "nombre": "Motorola Moto G22 (XT2231)",
+        "descripcion": "Motorola Moto G22 (XT2231) – 4GB/64GB – Reacondicionado Grado C",
+        "precio_lista": 115999,
+        "precio_oferta": 0,
+        "cantidad": 0
+    },
+    {
+        "nombre": "Motorola Moto G100 (XT2125)",
+        "descripcion": "Motorola Moto G100 (XT2125) – 8GB/128GB – Reacondicionado Grado A",
+        "precio_lista": 319999,
+        "precio_oferta": 0,
+        "cantidad": 0
+    },
+    {
+        "nombre": "Motorola Moto Edge 20 Pro (XT2153)",
+        "descripcion": "Motorola Moto Edge 20 Pro (XT2153) – 12GB/256GB – Reacondicionado Grado C",
+        "precio_lista": 234999,
+        "precio_oferta": 0,
+        "cantidad": 0
+    },
+    {
+        "nombre": "Motorola Moto G8 Plus (XT2019-2)",
+        "descripcion": "Motorola Moto G8 Plus (XT2019-2) – 4GB/64GB – Reacondicionado Grado C",
+        "precio_lista": 88999,
+        "precio_oferta": 0,
+        "cantidad": 0
+    },
+    {
+        "nombre": "Motorola Moto G20 (XT2128)",
+        "descripcion": "Motorola Moto G20 (XT2128) – 4GB/64GB – Reacondicionado Grado C",
+        "precio_lista": 109999,
+        "precio_oferta": 0,
+        "cantidad": 0
+    },
+    {
+        "nombre": "Motorola Moto G51",
+        "descripcion": "Motorola Moto G51 (4GB/12GB) - Reacondicionado Grado A",
+        "precio_lista": 322999,
+        "precio_oferta": 374999,
+        "cantidad": 100
+    },
+    {
+        "nombre": "Motorola Moto Edge 40 Neo",
+        "descripcion": "Motorola Moto Edge 40 Neo (8GB/256GB) - Reacondicionado Grado A",
+        "precio_lista": 549999,
+        "precio_oferta": 635500,
+        "cantidad": 80
+    },
+    {
+        "nombre": "Motorola Moto G52",
+        "descripcion": "Motorola Moto G52 (6GB/12GB) - Reacondicionado Grado A",
+        "precio_lista": 309999,
+        "precio_oferta": 360000,
+        "cantidad": 35
+    },
+    {
+        "nombre": "Samsung Z Flip 4",
+        "descripcion": "Samsung Z Flip 4 (8GB/128GB) - Reacondicionado Grado A",
+        "precio_lista": 899999,
+        "precio_oferta": 1050000,
+        "cantidad": 20
+    }
+]

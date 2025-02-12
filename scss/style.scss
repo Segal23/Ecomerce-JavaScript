@@ -9,39 +9,120 @@ body{
     color: black;
 }
 
-input{
-    margin-top: 10px;
-}
 
-.form{
-    display: flex;
-    flex-direction: column;
-    align-items:flex-end;
-    width: 250px
-}
-
-button{
-    align-self: center;
-    margin-top: 10px;
-    height: 25px;
-    width: 50px;
-}
-
+//header
 .container-header{
-    display: flex;
+    display: grid;
     justify-content: space-between;
-    margin-left: 10px;
-    margin-right: 10px;
-    background-color:darkgray;
-    height: 30px;
+    align-items: center;
+    background-color:#000000;
+    height: 75px;
+    color: whitesmoke;
+    font-weight: 500;
+
+    .div-welcome-message{
+        // width: 250;
+        grid-column: 1/2;
+        grid-row: 2/3;
+        p{
+            margin-left: 10px;
+            padding-top: 5px;
+        }
+    }
+
+    .div-logo{
+        margin-right: 40px;
+        grid-column: 2/3;
+        grid-row: 2/3;
+    }
+
+    .container-carrito{
+        padding-top: 10px;
+        margin-right: 10px;
+        grid-column: 3/4;
+        grid-row: 2/3;
+        display: flex;
+        justify-content: space-between;
+
+        a{
+            color: whitesmoke;
+            font-weight: 50 0;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .div-carrito-img-item{  
+            display: grid;
+
+            .div-carrito-img{        
+                grid-column: 1/6;
+                grid-row: 1/4;
+            }
+
+            .div-carrito-item{
+                grid-column: 3/5;
+                grid-row: 3/5;
+
+                p{
+                    font-size: 12px;
+                    font-weight: bold;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    background-color: #ec128f;
+                    border-radius: 50px;
+                    justify-self: center;
+                }
+            }
+        }
+    }
 }
 
-.container-carrito{
+.navbar{
+    padding: 0;
+    background-image: linear-gradient(to bottom right, #FFFFFF, #ec128fcc); 
+    font-size: 14px;
+    
+    .dropdown-menu{
+        background-image: linear-gradient(to bottom left, #FFFFFF, #ec128f88); 
+    } 
+
+    .login-dropdown-menu{
+        position: absolute;
+        right: 0; 
+        top: 100%; 
+        display: none; 
+        list-style: none;
+        text-align: start;
+    }
+
+    .dropdown:hover .login-dropdown-menu {
+        display: block;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-item{
+        font-size: 14px;
+        &:hover{
+            background-color: #FF139633;
+        }
+    }
+
+    .ul-login{
+        display: flex;
+        align-items: end;
+    }
+}
+
+#navbarSupportedContent{
+    height: 50px;
     display: flex;
-    width: 240px;
     justify-content: space-between;
 }
 
+//main_page.html
 .title{
     h1{
         font-size: 25px;
@@ -176,12 +257,13 @@ button{
 
 .tabla-carrito{
     width: 90%;
+    font-size: 14px;    
+    background-color: white;
     //En el modo separado, los navegadores representan el margin y el padding de la tabla (<table>) y el padding de las celdas (<td>).
     //En el modo colapsado, los navegadores representan únicamente el margin de la tabla (<table>) y el padding de las celdas (<td>).
     border-collapse: collapse;
     thead{
         tr{
-
             border-bottom: 1px solid grey;
             th{
                 padding: 10px;
@@ -196,7 +278,6 @@ button{
             }
         }
     }
-    // background-color: yellow;
 }
 
 .imagen-item-carrito{
@@ -263,4 +344,256 @@ button{
         font-size: 36px;
         margin: 30px 0;
     }
+}
+
+//listado_productos.html
+.listado-productos-title{
+    margin: 10px 0;
+    text-align: center;
+}
+
+.no-products-message{
+    margin: 30px 0;
+    padding: 30px;
+    background-color: #FF1396;
+    text-align: center;
+}
+
+
+.container-tabla-productos{
+    display: flex;
+    justify-content: center;
+}
+
+.tabla-productos{
+    width: 90%;
+    //En el modo separado, los navegadores representan el margin y el padding de la tabla (<table>) y el padding de las celdas (<td>).
+    //En el modo colapsado, los navegadores representan únicamente el margin de la tabla (<table>) y el padding de las celdas (<td>).
+    border-collapse: collapse;
+    thead{
+        tr{
+
+            border-bottom: 1px solid grey;
+            th{
+                font-size: 15;
+                padding: 10px;
+            }
+        }
+    }
+    tbody{
+        tr{
+            border-bottom: 1px solid grey;
+            td{
+                font-size: 12px;
+                color: #ec128f;
+                padding: 10px;
+                .img-agotado{
+                    width: 60px;
+                    height: 30px;
+                }
+            }
+        }
+    }
+}
+
+.th-listProd-nombre{
+    width: 30%;
+    text-align: start;
+}
+
+.th-listProd-descripcion{
+    width: 50%;
+    text-align: start;
+}
+
+.th-listProd-precio-lista{
+    width: 10%;
+    text-align: start;
+}
+
+.th-listProd-precio-oferta{
+    width: 15%;
+    text-align: start;
+}
+
+.th-listProd-cantidad{
+    width: 15%;
+    text-align: start;
+}
+
+
+//sweetAlert
+.swal2-styled{
+    padding: 5px;
+    height: 30px;
+}
+
+.swal2-confirm, .swal2-cancel{
+    width: 100px;
+}
+
+
+
+//formulario login
+.container-form{
+    margin: 50px 0;
+    height: 90vh;
+    background-image: url("../assets/contacto.webp");
+
+    .container-form-filtro{
+        background-color: #FFFFFFDD;
+        height: 100%;
+        padding: 30px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+
+        .container-form-marco{
+            width: 65vw;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ec128f;
+            border-radius: 5px;
+            box-shadow: 5px 5px 0 0 #CCCCCC88, 0 0 5px 5px #CCCCCC88;
+            
+            .div-form-titulo{
+                height: 25%;
+                p{
+                    font-size: 28px;
+                    font-weight: 500;
+                    color: #333e48;
+                    padding: 10px 0;
+                    line-height: 28px;
+                }
+            }
+
+            .form{
+                height: 75%;
+                width: 50%;                
+
+                input{
+                    border: 1px solid #ec128f55;
+                };
+
+                button{
+                    width: 100%;
+                    padding: 10px;
+                    background-color: #ec128f;
+                    color: #FFFFFFCC;
+                    border: 1px solid #cccccc;
+                    border-radius: 20px;
+                }
+            }
+        }
+    }
+}
+
+.input-group-text{
+    border-color: #00000000;
+    background-color: #CCCCCC;
+}
+
+.fa-user, .fa-lock, .fa-eye, .fa-eye-slash{
+    height: 26px;
+    align-content: center;
+
+}
+
+.user-icon, .lock-icon{
+    background-color: #CCCCCC;
+    border: 1px solid #ec128f55;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+.eye-icon{
+    background-color: #CCCCCC;
+    border: 1px solid #ec128f55;
+    border-top-right-radius: 7px ;
+    border-bottom-right-radius: 7px;
+}
+
+.div-register-link-icon{
+    display: flex;
+    justify-content: center;
+    .register-icon{
+        align-self: center;
+    }
+    .register-link{
+        text-decoration: none;
+        color: #000000;
+        margin-left: 10px;
+        align-self: center;
+    }
+}
+
+
+
+//formulario registración
+.container-form-registro{
+    margin: 50px 0;
+    background-image: url("../assets/contacto.webp");
+
+    .form-registro-filtro{
+        background-color: #FFFFFFDD;
+        height: 100%;
+        padding: 50px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+
+        .form-registro-marco{
+            padding: 20px;
+            width: 65vw;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ec128f;
+            border-radius: 5px;
+            box-shadow: 5px 5px 0 0 #CCCCCC88, 0 0 5px 5px #CCCCCC88;
+            
+            .div-form-registro-titulo{
+                height: 25%;
+                p{
+                    font-size: 28px;
+                    font-weight: 500;
+                    color: #333e48;
+                    padding: 10px 0;
+                    line-height: 28px;
+                }
+            }
+
+            .form{
+                height: 75%;
+                width: 50%;                
+                // background-color: green
+
+                input{
+                    border: 1px solid #ec128f55;
+                };
+
+                .span-required{
+                    color: #FF0000;
+                }
+
+                button{
+                    width: 100%;
+                    padding: 10px;
+                    background-color: #ec128f;
+                    color: #FFFFFFCC;
+                    border: 1px solid #cccccc;
+                    border-radius: 20px;
+                }
+            }
+        }   
+    }
+}
+
+.form-direccion{
+    display: flex;
 }
