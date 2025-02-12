@@ -6,21 +6,10 @@ const baseURL =  window.location.origin.includes("github.io")
 
 //Se fuerza la cargar la página al darle atrás en lugar de ir por el menú
 //ya que localmente funciona bien pero desde Github no se actualizan algunos valores
-// window.addEventListener("pageshow", (event) => {
-//     console.log("Evento pageshow detectado, persisted:", event.persisted);
-
-//     if (event.persisted) {
-//         location.reload(); 
-//     } else {
-//         setSesionUsuario();
-//         setSessionValues();
-//     }
-// });
-
-window.onload = function () {
+window.addEventListener("popstate", (event) => {
         setSesionUsuario();
         setSessionValues();
-};
+});
 
 class Producto{
 
