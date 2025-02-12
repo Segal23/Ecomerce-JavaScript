@@ -6,7 +6,6 @@ const baseURL =  window.location.origin.includes("github.io")
 
 //Se fuerza la cargar la página al darle atrás en lugar de ir por el menú
 //ya que localmente funciona bien pero desde Github no se actualizan algunos valores
-
 window.addEventListener("pageshow", (event) => {
         setSesionUsuario();
         setSessionValues();
@@ -58,8 +57,15 @@ function password_show_hide(id) {
 
 function showToast(message) {
 
+    const toastTimestamp = sessionStorage.getItem("toastTimestamp");
+    let tiempoTranscurrido = "";
+
+    if (toastTimestamp !== undefined) {
+        tiempoTranscurrido = Date.now() - parseInt(toastTimestamp, 10);
+    }
+
     //Si hay un toast activo sale de la función para no mostrar otro
-    if (sessionStorage.getItem("activeToast") === "true") {
+    if (sessionStorage.getItem("activeToast") === "true" && tiempoTranscurrido < 2100) {
         return;
     }
 
@@ -78,10 +84,12 @@ function showToast(message) {
 
     //Setea en la sessión que hay un toast activo
     sessionStorage.setItem("activeToast", "true");
+    sessionStorage.setItem("toastTimestamp", Date.now());
 
     //Transcurrido el tiempo de duración del toast se elimina de los datos de la sesión
     setTimeout(() => {
         sessionStorage.removeItem("activeToast");
+        sessionStorage.removeItem("toastTimestamp");
     }, 2100);
 }
 
