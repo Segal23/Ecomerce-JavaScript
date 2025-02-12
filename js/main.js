@@ -1,7 +1,7 @@
 //Solución para usar rutas dinámicas con cuando lo subo a Github 
 //ya agrega un directorio más y rompe las rutas
 const baseURL =  window.location.origin.includes("github.io") 
-                    ? `${window.location.origin}/Ecomerce-JavaScrip` 
+                    ? `${window.location.origin}/Ecomerce-JavaScript` 
                     : window.location.origin;
 
 class Producto{
