@@ -6,9 +6,9 @@ const baseURL =  window.location.origin.includes("github.io")
 
 //Se fuerza la cargar la página al darle atrás en lugar de ir por el menú
 //ya que localmente funciona bien pero desde Github no se actualizan algunos valores
-window.addEventListener("popstate", () => {
-    console.log("Evento pageshow detectado, persisted:");
-    window.location.reload();
+window.addEventListener("onbeforeunload", () => {
+    console.log("Evento pageshow detectado, persisted:", event.persisted);
+    window.location.go(-1);
 });
 
 class Producto{
