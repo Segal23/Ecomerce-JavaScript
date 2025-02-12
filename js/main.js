@@ -3,7 +3,7 @@
 const baseURL =  window.location.origin.includes("github.io") 
                     ? `${window.location.origin}/Ecomerce-JavaScript` 
                     : window.location.origin;
-
+                    
 class Producto{
 
     constructor(id, nombre, descripcion, imagen, precio, cantidad){
