@@ -4,23 +4,18 @@ const baseURL =  window.location.origin.includes("github.io")
                     ? `${window.location.origin}/Ecomerce-JavaScript` 
                     : window.location.origin;
 
-// //Se fuerza la cargar la página al darle atrás en lugar de ir por el menú
-// //ya que localmente funciona bien pero desde Github no se actualizan algunos valores
+//Se fuerza la cargar la página al darle atrás en lugar de ir por el menú
+//ya que localmente funciona bien pero desde Github no se actualizan algunos valores
+window.addEventListener("pageshow", (event) => {
+    console.log("Evento pageshow detectado, persisted:", event.persisted);
 
-// let isBackNavigation = false;
-
-// window.addEventListener("popstate", () => {
-//     isBackNavigation = true;
-// });
-
-// window.addEventListener("pageshow", (event) => {
-//     if (isBackNavigation && !sessionStorage.getItem("pageReloaded")) {
-//         sessionStorage.setItem("pageReloaded", "true"); // Marcar que la página será recargada
-//         location.reload(); // Recargar la página
-//     }
-//     isBackNavigation = false; // Reseteamos el marcador después de la recarga
-// });
-
+    if (event.persisted) {
+        location.reload(); 
+    } else {
+        setSesionUsuario();
+        setSessionValues();
+    }
+});
 
 class Producto{
 
