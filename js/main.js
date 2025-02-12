@@ -6,10 +6,12 @@ const baseURL =  window.location.origin.includes("github.io")
 
 //Se fuerza la cargar la página al darle atrás en lugar de ir por el menú
 //ya que localmente funciona bien pero desde Github no se actualizan algunos valores
-window.addEventListener("onbeforeunload", () => {
-    console.log("Evento pageshow detectado, persisted:", event.persisted);
-    window.location.go(-1);
-});
+
+window.addEventListener("pageshow", (event) => {
+        setSesionUsuario();
+        setSessionValues();
+    });
+
 
 class Producto{
 
@@ -314,7 +316,7 @@ async function iniciarSesion(){
 
             //Vuelve a la página desde donde se llamó al formulario de login
             if (document.referrer !== `${baseURL}/html/signup.html`){
-                window.history.go(-1);
+                window.location = document.referrer;
             }else{
                 window.location = `${baseURL}/index.html`;
             }
@@ -533,7 +535,6 @@ async function mostrarProductos(){
     let bodyTabla = "";
     let itemCantidad = "";
 
-    console.log(productos);
     if (productos.length === 0){
         let noProductsMessage = document.createElement("h2");
         noProductsMessage.className = "no-products-message";
