@@ -235,7 +235,7 @@ function setSesionUsuario(){
     if (usuario !== null) {
         let nombreUsuario = document.getElementById('usuario-logueado');
         nombreUsuario.textContent =`${usuario.username}`;
-        loginIcon.src = "../assets/logout_icon.png";
+        loginIcon.src = `${window.origin}/assets/logout_icon.png";`
         loginIcon.alt = "Cerrar Sesión";
         loginDropDownListItem.innerHTML = `
             <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>`;
